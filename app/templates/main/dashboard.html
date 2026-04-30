@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Dashboard — AuthX v2{% endblock %}
+{% block content %}
+  <h1>Dashboard</h1>
+  <p>Welcome, <strong>{{ email }}</strong> <span class="badge">{{ role }}</span></p>
+
+  <h3>Recent activity (audit log)</h3>
+  {% if logs %}
+    <table>
+      <tr><th>Acțiune</th><th>Resursă</th><th>IP</th><th>Timestamp</th></tr>
+      {% for l in logs %}
+        <tr>
+          <td>{{ l['action'] }}</td>
+          <td>{{ l['resource'] }}</td>
+          <td>{{ l['ip_address'] }}</td>
+          <td>{{ l['timestamp'] }}</td>
+        </tr>
+      {% endfor %}
+    </table>
+  {% else %}
+    <p class="hint">Niciun eveniment înregistrat încă.</p>
+  {% endif %}
+{% endblock %}
+

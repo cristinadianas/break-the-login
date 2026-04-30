@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Setare parolă nouă — AuthX v2{% endblock %}
+{% block content %}
+  <h1>Setare parolă nouă</h1>
+  <form method="POST" action="{{ url_for('auth.reset_password', token=token) }}">
+    <input type="hidden" name="token" value="{{ token }}">
+    <label>Parolă nouă</label>
+    <input type="password" name="password" required minlength="12">
+    <p class="hint">Min 12 caractere, cu literă mare, mică, cifră și caracter special.</p>
+    <button type="submit">Salvează</button>
+  </form>
+{% endblock %}
+

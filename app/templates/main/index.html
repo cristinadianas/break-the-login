@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}AuthX v2{% endblock %}
+{% block content %}
+  <h1>AuthX v2 — fixed</h1>
+  <p>Versiune securizată a aplicației de autentificare AuthX.</p>
+  <p>
+    {% if session.get('user_id') %}
+      Ești autentificat ca <strong>{{ session['email'] }}</strong>.
+      Mergi la <a href="{{ url_for('main.dashboard') }}">dashboard</a>.
+    {% else %}
+      <a href="{{ url_for('auth.login') }}">Login</a> ·
+      <a href="{{ url_for('auth.register') }}">Register</a>
+    {% endif %}
+  </p>
+{% endblock %}
+

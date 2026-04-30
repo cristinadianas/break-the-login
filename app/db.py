@@ -1,12 +1,13 @@
 import sqlite3
-from flask import g, current_app
+import click
+from flask import current_app, g
 
 
 def get_db():
-    if 'db' not in g:
+    if "db" not in g:
         g.db = sqlite3.connect(
-            current_app.config['DATABASE'],
-            detect_types=sqlite3.PARSE_DECLTYPES
+            current_app.config["DATABASE"],
+            detect_types=sqlite3.PARSE_DECLTYPES,
         )
         g.db.row_factory = sqlite3.Row
         g.db.execute("PRAGMA foreign_keys = ON")
@@ -14,21 +15,24 @@ def get_db():
 
 
 def close_db(e=None):
-    db = g.pop('db', None)
+    db = g.pop("db", None)
     if db is not None:
         db.close()
 
 
 def init_db():
     db = get_db()
-    with current_app.open_resource('../schema.sql') as f:
-        db.executescript(f.read().decode('utf-8'))
-    db.commit()
+    with current_app.open_resource("../schema.sql") as f:
+        db.executescript(f.read().decode("utf-8"))
+
+
+@click.command("init-db")
+def init_db_command():
+    init_db()
+    click.echo("Initialized AuthX v2 database.")
 
 
 def init_app(app):
     app.teardown_appcontext(close_db)
-    @app.cli.command('init-db')
-    def init_db_command():
-        init_db()
-        print('Database initialized.')
+    app.cli.add_command(init_db_command)
+

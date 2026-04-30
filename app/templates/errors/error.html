@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block title %}Eroare {{ code }} — AuthX v2{% endblock %}
+{% block content %}
+  <h1>Eroare {{ code }}</h1>
+  <p>{{ msg }}</p>
+  <p><a href="{{ url_for('main.index') }}">Înapoi la pagina principală</a></p>
+{% endblock %}
+

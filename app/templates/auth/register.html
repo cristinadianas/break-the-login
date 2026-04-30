@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Register — AuthX v2{% endblock %}
+{% block content %}
+  <h1>Înregistrare</h1>
+  <form method="POST">
+    <label>Email</label>
+    <input type="email" name="email" required autofocus>
+    <label>Parolă</label>
+    <input type="password" name="password" required minlength="{{ min_len|default(12) }}">
+    <p class="hint">
+      Cerințe parolă:
+      <ul>
+        <li>minim {{ min_len|default(12) }} caractere</li>
+        <li>cel puțin o literă mare, una mică, o cifră, un caracter special</li>
+        <li>nu e o parolă comună (ex: <code>password</code>, <code>qwerty</code>)</li>
+      </ul>
+    </p>
+    <button type="submit">Creare cont</button>
+  </form>
+{% endblock %}
+
