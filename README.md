@@ -18,6 +18,8 @@ AuthX este o aplicație internă fictivă pentru autentificarea angajaților une
 
 Fiecare din cele 6 vulnerabilități din specificație (4.1-4.6) e: (a) injectată explicit în v1, (b) demonstrată cu PoC reproductibil, (c) reparată în v2 cu un fix mapat 1:1, (d) re-testată după fix pentru a valida remedierea.
 
+### DEMO: [Clip video](https://drive.google.com/file/d/1a6fxahiBCTfu9zu9C6FYKQSQf_3h_x-4/view?usp=drive_link)
+
 ## 2. Stack tehnic
 
 - **Limbaj:** Python 3.14
@@ -127,7 +129,7 @@ Tabelul central pentru evaluator. Fiecare rând: o cerință din specificație �
 
 ## 8. Atacuri — comenzi reproductibile
 
-Fiecare atac are pas-cu-pas în secțiunea aferentă din raport. Aici doar comenzile de un singur shot.
+Fiecare atac are pas-cu-pas în secțiunea aferentă din raport.
 
 ### Atac 1 — Password policy (VULN 4.1)
 
